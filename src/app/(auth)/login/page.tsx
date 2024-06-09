@@ -11,7 +11,7 @@ const Page: FC = () => {
   async function loginWithGoogle() {
     setIsLoading(true)
     try {
-      await signIn('google')
+      await signIn("google", { callbackUrl: "/dashboard" });
     } catch (error) {
       // display error message to user
       toast.error('Something went wrong with your login.')
