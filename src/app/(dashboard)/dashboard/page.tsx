@@ -1,6 +1,7 @@
 import { getFriendsByUserId } from "@/helpers/get-friends-by-user-id";
 import { fetchRedis } from "@/helpers/redis";
 import { authOptions } from "@/lib/auth";
+import { decryptMessage } from "@/lib/crypto";
 import { chatHrefConstructor } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
 import { getServerSession } from "next-auth";
@@ -24,15 +25,19 @@ const page = async ({}) => {
       )) as string[];
 
       let lastMessage;
+      let decryptedText;
       if (lastMessageRaw) {
         lastMessage = JSON.parse(lastMessageRaw) as Message;
+        decryptedText = decryptMessage(lastMessage.text);
       } else {
         lastMessage = null;
+        decryptedText = null;
       }
 
       return {
         ...friend,
         lastMessage,
+        decryptedText,
       };
     })
   );
@@ -79,7 +84,7 @@ const page = async ({}) => {
                       ? "You: "
                       : ""}
                   </span>
-                  {friend?.lastMessage?.text}
+                  {friend?.decryptedText || "No messages yet"}
                 </p>
               </div>
             </Link>
