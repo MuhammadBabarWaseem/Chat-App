@@ -8,11 +8,7 @@
 - Responsive UI built with TailwindCSS
 - Protection of sensitive routes
 - Google authentication
+- Encrypt Messages Using AES
 
 - Built with TypeScript
 - TailwindCSS
-- Icons from Lucide
-
-- Class merging with tailwind-merge
-- Conditional classes with clsx
-- Variants with class-variance-authority
