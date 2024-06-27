@@ -28,7 +28,7 @@ const Page: FC = () => {
         <div className="w-full flex flex-col items-center max-w-md space-y-8">
           <div className="flex flex-col items-center gap-3">
             <Image alt="App Main Logo" src={AppLogo} />
-            <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900">
+            <h2 className="text-center text-3xl font-serif font-semibold tracking-tight text-gray-900">
               Sign in to your account
             </h2>
           </div>
